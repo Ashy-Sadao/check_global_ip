@@ -1,9 +1,16 @@
 import requests
 import os
 
+# スクリプトファイルがある場所にカレントディレクトリを変更
+script_dir = os.path.dirname(os.path.abspath(__file__))
+os.chdir(script_dir)
+
+from dotenv import load_dotenv
+load_dotenv("./.env")
+
 # --- 設定ここから ---
 WEBHOOK_URL = os.environ.get('WEBHOOK_URL')  # 自分のWebhook URLをここに
-LAST_IP_FILE = os.environ.get('LAST_IP_FILE')  # IP保存用ファイルのパス
+LAST_IP_FILE = "./last_ip.txt"  # IP保存用ファイルのパス
 # --- 設定ここまで ---
 
 def get_global_ip():
